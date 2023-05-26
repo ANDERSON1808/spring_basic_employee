@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employee">
+      <h2 data-cy="employeeDetailsHeading"><span>Employee</span></h2>
+
+      <hr/>
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ employee.id }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ employee.name }}</span>
+        </dd>
+        <dt><span>Document</span></dt>
+        <dd>
+          <span>{{ employee.document }}</span>
+        </dd>
+        <dt><span>Salary</span></dt>
+        <dd>
+          <span>{{ employee.salary | currency:'COP':'symbol-narrow' }}</span>
+        </dd>
+        <dt><span>Other Names</span></dt>
+        <dd>
+          <span>{{ employee.otherNames }}</span>
+        </dd>
+        <dt><span>Annual Salary</span></dt>
+        <dd>
+          <span>{{ employee.annualSalary | currency:'COP':'symbol-narrow' }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

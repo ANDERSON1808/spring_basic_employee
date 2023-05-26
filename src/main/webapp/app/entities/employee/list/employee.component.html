@@ -1,0 +1,85 @@
+<div>
+  <h2 id="page-heading" data-cy="EmployeeHeading">
+    <span>Employees</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="employees?.length === 0">
+    <span>No employees found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="employees && employees.length > 0">
+    <div class="input-group mb-3">
+      <input type="number" class="form-control" [(ngModel)]="searchId" placeholder="Search by ID">
+      <div class="input-group-append">
+        <button class="btn btn-outline-info" type="button" (click)="performSearch()">Search</button>
+      </div>
+    </div>
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+      <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+        <th scope="col" jhiSortBy="id"><span>ID</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col" jhiSortBy="name"><span>Name</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col" jhiSortBy="document"><span>Document</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col" jhiSortBy="salary"><span>Salary</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col" jhiSortBy="otherNames"><span>Other Names</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col" jhiSortBy="annualSalary"><span>Annual Salary</span>
+          <fa-icon icon="sort"></fa-icon>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a [routerLink]="['/employee', employee.id, 'view']">{{ employee.id }}</a>
+        </td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.document }}</td>
+        <td>{{ employee.salary | currency:'COP':'symbol-narrow' }}</td>
+        <td>{{ employee.otherNames }}</td>
+        <td>{{ employee.annualSalary | currency:'COP':'symbol-narrow' }}</td>
+        <td class="text-right">
+          <div class="btn-group">
+            <button
+              type="submit"
+              [routerLink]="['/employee', employee.id, 'view']"
+              class="btn btn-info btn-sm"
+              data-cy="entityDetailsButton"
+            >
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline">View</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="employees && employees.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+  </div>
+</div>

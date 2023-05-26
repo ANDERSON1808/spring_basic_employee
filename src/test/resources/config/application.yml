@@ -1,0 +1,40 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+spring:
+  profiles:
+    # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
+    #active: testcontainers
+  application:
+    name: employes
+  autoconfigure:
+    exclude:
+      - org.springframework.cloud.gateway.config.GatewayMetricsAutoConfiguration
+  jackson:
+    serialization:
+      write-durations-as-timestamps: false
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
+  r2dbc:
+    url: r2dbc:h2:mem:///employes;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: r2dbc
+    password:
+  task:
+    execution:
+      thread-name-prefix: employes-task-
+      pool:
+        core-size: 1
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: employes-scheduling-
+      pool:
+        size: 1
+  thymeleaf:
+    mode: HTML
+
+server:
+  port: 10344
+  address: localhost
