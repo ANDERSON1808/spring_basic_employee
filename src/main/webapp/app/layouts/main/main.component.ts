@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 
-import { AccountService } from 'app/core/auth/account.service';
-
 @Component({
   selector: 'jhi-main',
   templateUrl: './main.component.html',

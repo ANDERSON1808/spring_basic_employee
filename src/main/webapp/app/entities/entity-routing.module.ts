@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: 'employee',
-        data: { pageTitle: 'Employees' },
+        data: { pageTitle: 'Employee list' },
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
       },
     ]),
