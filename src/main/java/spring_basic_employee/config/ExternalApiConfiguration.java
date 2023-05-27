@@ -13,10 +13,10 @@ public class ExternalApiConfiguration {
     private final Logger log = LoggerFactory.getLogger(ExternalApiConfiguration.class);
 
     @Value("${employs.get-all-url}")
-    private String routeGetAllEmploys;
+    String routeGetAllEmploys;
 
     @Value("${employs.get-id-url}")
-    private String routeGetByIdEmploys;
+    String routeGetByIdEmploys;
 
     @Bean
     public ConfigExternal startConfigExternalEmploys() {

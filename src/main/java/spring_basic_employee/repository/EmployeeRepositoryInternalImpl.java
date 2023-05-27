@@ -9,9 +9,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
-/**
- * Spring Data SQL reactive custom repository implementation for the Employee entity.
- */
+
 @SuppressWarnings("unused")
 @Repository
 public class EmployeeRepositoryInternalImpl implements EmployeeRepository {

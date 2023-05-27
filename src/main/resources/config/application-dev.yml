@@ -46,7 +46,7 @@ server:
 # application:
 
 employs:
-  get-all-url: "https://run.mocky.io/v3/dd276bdd-7d47-4803-9b61-8f99d9f02baf"
+  get-all-url: "https://dummy.restapiexample.com/api/v1/employees"
   get-id-url: "https://dummy.restapiexample.com/api/v1/employee"
 
 #  get-all-url: "https://run.mocky.io/v3/dd276bdd-7d47-4803-9b61-8f99d9f02baf"
