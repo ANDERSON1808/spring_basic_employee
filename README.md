@@ -34,7 +34,7 @@ npm start
 To build the final jar and optimize the employes application for production, run:
 
 ```
-./mvnw -Pdev clean verify
+./mvnw clean verify
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
@@ -52,7 +52,7 @@ Then navigate to [http://localhost:8789](http://localhost:8789) in your browser.
 To package your application as a war in order to deploy it to an application server, run:
 
 ```
-./mvnw -Pdev,war clean verify
+./mvnw clean verify war:war
 ```
 
 ## Testing
